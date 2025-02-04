@@ -1,0 +1,64 @@
+T915{I_L0V3_X0R_3NCRYP710N}
+
+Approach:
+1. The file was executed in Linux terminal, using wine.
+2. As all the previous files had their flags starting from "T915{", I was sure that this one will be the same.
+3. After executing the program in wine, I entered "T915{" which showed it was wrong, 
+   I got the hint that the index value 5 was wrong as it was blank. It showed binary values up to where it was correct.
+4. The values matched "T915{" in ascii characters. 
+5. Then I went back to the main function in ghidra where the logic was decompiled, and took the values which were stored from local_24 to local_a3[0].
+6. I had noticed the binary values were performing a bitwise XOR operation with each other to generate an ascii character.
+7. After taking the values stored between local_24 to local_a3[0] I performed a bitwise XOR with each other by making a password solving script in python.
+
+Providing the code below:
+
+def solve_password():
+    # Values from the binary
+    local_24 = [0x39, 0x4d, 0x4a, 0x45, 0x68,0x2f,0x27,0x35,0x4c,0x38,0x49,0x44,0x59,0x56,0x31,0x5b,0x60,0x32,0x68,0x4e,0x57,0x34,0x4a,0x61,0x53,0x69,0x43,0] 
+    local_3f = [0x6d, 0x74, 0x7b, 0x70, 0x13,0x66,0x78,0x79,0x7c,0x6e,0x7a,0x1b,1, 0x66,99,4,0x53,0x7c,0x2b,0x1c,0xe,100,0x7d,0x50,99,0x27,0x3e]  
+    #Total 27 characters in password.
+    
+    # Calculate characters of password
+    password = ""
+    for i in range(min(len(local_24), len(local_3f))):
+        char = local_24[i] ^ local_3f[i]
+        password += chr(char)
+        print(f"Position {i}: {local_24[i]:02x} ^ {local_3f[i]:02x} = {char:02x} ('{chr(char)}')")
+    
+    return password
+
+print("Calculating password characters...")
+password = solve_password()
+print(f"\nCharacters of password: {password}") 
+
+Output: 
+Calculating password characters...
+Position 0: 39 ^ 6d = 54 ('T')
+Position 1: 4d ^ 74 = 39 ('9')
+Position 2: 4a ^ 7b = 31 ('1')
+Position 3: 45 ^ 70 = 35 ('5')
+Position 4: 68 ^ 13 = 7b ('{')
+Position 5: 2f ^ 66 = 49 ('I')
+Position 6: 27 ^ 78 = 5f ('_')
+Position 7: 35 ^ 79 = 4c ('L')
+Position 8: 4c ^ 7c = 30 ('0')
+Position 9: 38 ^ 6e = 56 ('V')
+Position 10: 49 ^ 7a = 33 ('3')
+Position 11: 44 ^ 1b = 5f ('_')
+Position 12: 59 ^ 01 = 58 ('X')
+Position 13: 56 ^ 66 = 30 ('0')
+Position 14: 31 ^ 63 = 52 ('R')
+Position 15: 5b ^ 04 = 5f ('_')
+Position 16: 60 ^ 53 = 33 ('3')
+Position 17: 32 ^ 7c = 4e ('N')
+Position 18: 68 ^ 2b = 43 ('C')
+Position 19: 4e ^ 1c = 52 ('R')
+Position 20: 57 ^ 0e = 59 ('Y')
+Position 21: 34 ^ 64 = 50 ('P')
+Position 22: 4a ^ 7d = 37 ('7')
+Position 23: 61 ^ 50 = 31 ('1')
+Position 24: 53 ^ 63 = 30 ('0')
+Position 25: 69 ^ 27 = 4e ('N')
+Position 26: 43 ^ 3e = 7d ('}')
+
+Characters of password: T915{I_L0V3_X0R_3NCRYP710N}

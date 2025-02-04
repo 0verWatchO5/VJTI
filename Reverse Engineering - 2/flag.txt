@@ -1,0 +1,40 @@
+T915{1N5TRUC710NS_4R3_B3TT3R}
+
+Approach:
+1. Started with local_6c and moved through local_50.
+2. For each character, extracting its required value from the conditional chain in Ghidra:
+local_6c == 'T'
+local_6b == '9'
+local_6a == '1'
+local_69 == '5'
+local_68 == '{'
+local_67 == '1'
+local_66 == 'N'
+local_65 == '5'
+local_64 == 'T'
+local_63 == 'R'
+local_62 == 'U'
+local_61 == 'C'
+local_60 == '7'
+local_5f == '1'
+local_5e == '0'
+local_5d == 'N'
+local_5c == 'S'
+local_5b == '_'
+local_5a == '4'
+local_59 == 'R'
+local_58 == '3'
+local_57 == '_'
+local_56 == 'B'
+local_55 == '3'
+local_54 == 'T'
+local_53 == 'T'
+local_52 == '3'
+local_51 == 'R'
+local_50 == '}'
+
+3. Concatenating the extracted values in the given order.
+
+4. Executing the file with wine in kali Linux to test the flag.
+
+

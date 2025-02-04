@@ -1,0 +1,20 @@
+T915{I_R1GH7_TH3_WR0NG5}
+
+APPROACH:
+1. Disassembled the program
+Loaded the .exe file into Binary Ninja to view its assembly code.
+
+2. Switched to Graph Mode
+Changed the display to graph mode to see how the program's logic flows between different code blocks.
+
+3. Analyzed the logic
+Focused on the code handling Lock() and Unlock() logic.
+Found a JNE (Jump if Not Equal) instruction, which checked if the input was correct. If not, it led to the "WRONG" message.
+
+4. Modified the behavior
+Changed JNE to JE (Jump if Equal), reversing the condition.
+This made the program treat a wrong input as correct and bypass the "WRONG" logic.
+
+5. Executed the patched file
+Ran the modified .exe.
+Instead of showing "WRONG," the program revealed the flag: "I right the wrongs."

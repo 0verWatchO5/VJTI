@@ -1,0 +1,74 @@
+1. Decompiled the owo.exe file by tool using pyinstxtractor.
+2. Then found the main.pyc file name and disassembled the obfuscated python compiled code.
+3. pycdas main.pyc
+main.pyc (Python 3.13)
+[Code]
+    File Name: main.py
+    Object Name: <module>
+    Qualified Name: <module>
+    Arg Count: 0
+    Pos Only Arg Count: 0
+    KW Only Arg Count: 0
+    Stack Size: 2
+    Flags: 0x00000000
+    [Names]
+        'sys'
+        'main'
+    [Locals+Names]
+    [Constants]
+        0
+        None
+        [Code]
+            File Name: main.py
+            Object Name: main
+            Qualified Name: main
+            Arg Count: 0
+            Pos Only Arg Count: 0
+            KW Only Arg Count: 0
+            Stack Size: 5
+            Flags: 0x00000003 (CO_OPTIMIZED | CO_NEWLOCALS)
+            [Names]
+                'input'
+                'join'
+                'print'
+            [Locals+Names]
+                'flag'
+                'zz'
+            [Constants]
+                None
+                '>>>'
+                (
+                    '}'
+                    'R'
+                    '3'
+                    'L'
+                    'D'
+                    'N'
+                    '4'
+                    'H'
+                    '_'
+                    '3'
+                    'K'
+                    '4'
+                    'N'
+                    'S'
+                    '_'
+                    'T'
+                    'R'
+                    '3'
+                    'P'
+                    'X'
+                    'E'
+                    '{'
+                    '5'
+                    '1'
+                    '9'
+                    'T'
+                )
+                ''
+                -1
+                'Correct :^)'
+                'Wrong :('
+4. Reversed the list and joined it into a string
+		flag = ''.join(zz[::-1]).strip()  # Added .strip() to remove extra whitespace
+		print(f"Flag: {flag}")
